@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* =====================================================
+   DESIGN TOKENS — Gustavo Kauã Portfolio
+   Tailwind CSS v4 CSS-first configuration
+   ===================================================== */
+@theme {
+  /* Colors */
+  --color-bg-primary: #0A0E14;
+  --color-bg-surface: #171C22;
+  --color-bg-elevated: #1E252F;
+
+  --color-blue-electric: #00AEEF;
+  --color-blue-light: #1FCFFF;
+  --color-blue-dim: #0082B3;
+
+  --color-text-white: #EAF8FF;
+  --color-text-secondary: #919AA5;
+  --color-text-muted: #5A6473;
+
+  /* Fonts */
+  --font-sans: 'Sora', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Sora', 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Animations */
+  --animate-marquee: marquee 25s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 2s infinite;
+  --animate-pulse-blue: pulse-blue 3s ease-in-out infinite;
+  --animate-spin-slow: spin 20s linear infinite;
+
+  /* Keyframes */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+
+  @keyframes pulse-blue {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+  }
+}
+
+/* =====================================================
+   BASE STYLES
+   ===================================================== */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  body {
+    background-color: #0A0E14;
+    color: #EAF8FF;
+    font-family: 'Sora', 'Plus Jakarta Sans', system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    background-color: rgba(0, 174, 239, 0.3);
+    color: #EAF8FF;
+  }
+
+  :focus-visible {
+    outline: 2px solid #00AEEF;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0A0E14; }
+  ::-webkit-scrollbar-thumb { background: #1E252F; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #00AEEF; }
+}
+
+/* =====================================================
+   COMPONENT CLASSES
+   ===================================================== */
+@layer components {
+  .label-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #919AA5;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #00AEEF;
+    color: #0A0E14;
+    font-weight: 600;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover {
+    background-color: #1FCFFF;
+    box-shadow: 0 0 30px rgba(0, 174, 239, 0.35);
+    transform: scale(1.05);
+  }
+  .btn-primary:active { transform: scale(0.95); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #1E252F;
+    color: #EAF8FF;
+    font-weight: 600;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: transparent;
+  }
+  .btn-outline:hover {
+    border-color: #00AEEF;
+    color: #00AEEF;
+    transform: scale(1.05);
+  }
+  .btn-outline:active { transform: scale(0.95); }
+
+  .card-dark {
+    background-color: #171C22;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
+  }
+  .card-dark:hover {
+    border-color: rgba(0, 174, 239, 0.3);
+    box-shadow: 0 0 30px rgba(0, 174, 239, 0.15);
+  }
+
+  .section-padding {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .section-padding {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding-left: 4.5rem;
+      padding-right: 4.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .section-padding {
+      padding-left: 6.5rem;
+      padding-right: 6.5rem;
+    }
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
